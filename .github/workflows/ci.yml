@@ -23,6 +23,10 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
+      - name: Debug OIDC Claims
+        uses: github/actions-oidc-debugger@main
+        with:
+          audience: '${{ github.server_url }}/${{ github.repository_owner }}'
       - uses: actions/checkout@v4
       - name: Deploy Function
         id: sls-func
