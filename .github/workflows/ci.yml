@@ -36,5 +36,4 @@ jobs:
           include: |
             **/*.json
             **/*.js
-          tags: |
-            ${{ GITHUB_SHA::6 }}
+
