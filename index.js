@@ -6,7 +6,7 @@ async function cropImage(imageBase64, width, height) {
 
         const croppedBuffer = await sharp(buffer)
             .resize(width, height)
-            .toBuffer(); // Преобразуем обратно в буфер
+            .toBuffer(); 
 
         // Кодируем результат в base64
         const croppedImageBase64 = croppedBuffer.toString('base64');
