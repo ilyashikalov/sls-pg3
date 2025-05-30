@@ -27,18 +27,18 @@ jobs:
         uses: github/actions-oidc-debugger@main
         with:
           audience: '${{ github.server_url }}/${{ github.repository_owner }}'
-      - uses: actions/checkout@v4
-      - name: Deploy Function
-        id: sls-func
-        uses: yc-actions/yc-sls-function@v3.1.0
-        with:
-          yc-sa-id: ${{env.SA_ID}}
-          folder-id: ${{env.FOLDER_ID}}
-          function-name: ${{env.FUNCTION_NAME}}
-          runtime: ${{env.FUNCTION_RUNTIME}}
-          memory: ${{env.MEMORY}}
-          entrypoint: ${{env.FUNCTION_ENTRYPOINT}}
-          include: |
-            **/*.json
-            **/*.js
+      # - uses: actions/checkout@v4
+      # - name: Deploy Function
+      #   id: sls-func
+      #   uses: yc-actions/yc-sls-function@v3.1.0
+      #   with:
+      #     yc-sa-id: ${{env.SA_ID}}
+      #     folder-id: ${{env.FOLDER_ID}}
+      #     function-name: ${{env.FUNCTION_NAME}}
+      #     runtime: ${{env.FUNCTION_RUNTIME}}
+      #     memory: ${{env.MEMORY}}
+      #     entrypoint: ${{env.FUNCTION_ENTRYPOINT}}
+      #     include: |
+      #       **/*.json
+      #       **/*.js
 
