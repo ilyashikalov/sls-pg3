@@ -4,22 +4,21 @@ permissions:
 on: 
   push:
     branches: [ feature* ]
-  pull_request:
-    branches: [ main ]
+
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
 env:
   FOLDER_ID: b1gglm04p12mqvn207mq
   SA_ID: ajegot41f9ofbcmqpm3l
-  FUNCTION_NAME: crop-image-test
+  FUNCTION_NAME: crop-image-integration
   FUNCTION_RUNTIME: nodejs18
   FUNCTION_ENTRYPOINT: index.handler
   FUNCTION_MEMORY: 128Mb
   
 jobs:
   build:
-    environment: test
+    environment: integration
     runs-on: ubuntu-latest
     
     steps:
