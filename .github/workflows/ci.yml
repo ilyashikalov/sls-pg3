@@ -3,7 +3,7 @@ permissions:
 
 on: 
   push:
-    branches: [ feature** ]
+    branches: [ feature* ]
   pull_request:
     branches: [ main ]
   # Allows you to run this workflow manually from the Actions tab
@@ -23,22 +23,18 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - name: Debug OIDC Claims
-        uses: github/actions-oidc-debugger@main
+      - uses: actions/checkout@v4
+      - name: Deploy Function
+        id: sls-func
+        uses: yc-actions/yc-sls-function@v3.1.0
         with:
-          audience: '${{ github.server_url }}/${{ github.repository_owner }}'
-      # - uses: actions/checkout@v4
-      # - name: Deploy Function
-      #   id: sls-func
-      #   uses: yc-actions/yc-sls-function@v3.1.0
-      #   with:
-      #     yc-sa-id: ${{env.SA_ID}}
-      #     folder-id: ${{env.FOLDER_ID}}
-      #     function-name: ${{env.FUNCTION_NAME}}
-      #     runtime: ${{env.FUNCTION_RUNTIME}}
-      #     memory: ${{env.MEMORY}}
-      #     entrypoint: ${{env.FUNCTION_ENTRYPOINT}}
-      #     include: |
-      #       **/*.json
-      #       **/*.js
+          yc-sa-id: ${{env.SA_ID}}
+          folder-id: ${{env.FOLDER_ID}}
+          function-name: ${{env.FUNCTION_NAME}}
+          runtime: ${{env.FUNCTION_RUNTIME}}
+          memory: ${{env.MEMORY}}
+          entrypoint: ${{env.FUNCTION_ENTRYPOINT}}
+          include: |
+            **/*.json
+            **/*.js
 
